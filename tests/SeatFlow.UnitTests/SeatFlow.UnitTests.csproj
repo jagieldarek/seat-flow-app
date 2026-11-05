@@ -18,4 +18,9 @@
     <Using Include="Xunit" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\SeatFlow.Domain\SeatFlow.Domain.csproj" />
+    <ProjectReference Include="..\..\src\SeatFlow.Application\SeatFlow.Application.csproj" />
+  </ItemGroup>
+
 </Project>
