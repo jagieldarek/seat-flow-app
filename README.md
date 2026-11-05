@@ -1,2 +1,1 @@
-
-Seat flow app.
+Event ticketing API with seat reservations, built with .NET 10, EF Core and PostgreSQL. Work in progress.

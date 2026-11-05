@@ -1,2 +1,12 @@
 <Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SeatFlow.Api/SeatFlow.Api.csproj" />
+    <Project Path="src/SeatFlow.Application/SeatFlow.Application.csproj" />
+    <Project Path="src/SeatFlow.Domain/SeatFlow.Domain.csproj" />
+    <Project Path="src/SeatFlow.Infrastructure/SeatFlow.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SeatFlow.IntegrationTests/SeatFlow.IntegrationTests.csproj" />
+    <Project Path="tests/SeatFlow.UnitTests/SeatFlow.UnitTests.csproj" />
+  </Folder>
 </Solution>
