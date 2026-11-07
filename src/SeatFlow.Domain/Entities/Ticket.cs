@@ -2,21 +2,23 @@ namespace SeatFlow.Domain.Entities;
 
 public class Ticket
 {
-	public Guid Id { get; private set; } = Guid.CreateVersion7();
+    public Guid Id { get; private set; } = Guid.CreateVersion7();
 
-	public Guid OrderId { get; set; }
-	public Order Order { get; set; } = null!;
+    public Guid OrderId { get; set; }
 
-	public Guid EventId { get; set; }
+    public Order Order { get; set; } = null!;
 
-	public Guid SeatId { get; set; }
-	public Seat Seat { get; set; } = null!;
+    public Guid EventId { get; set; }
 
-	public decimal Price { get; set; }
+    public Guid SeatId { get; set; }
 
-	public required string Code { get; set; }
+    public Seat Seat { get; set; } = null!;
 
-	public DateTimeOffset? CheckedInAt { get; set; }
+    public decimal Price { get; set; }
 
-	public bool IsActive {get; set; } = true;
+    public required string Code { get; set; }
+
+    public DateTimeOffset? CheckedInAt { get; set; }
+
+    public bool IsActive { get; set; } = true;
 }
