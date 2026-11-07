@@ -1,4 +1,5 @@
 namespace SeatFlow.Domain.Entities;
+
 public class Seat
 {
     public Guid Id { get; private set; } = Guid.CreateVersion7();
