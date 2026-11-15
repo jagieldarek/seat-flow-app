@@ -5,7 +5,7 @@ namespace SeatFlow.Domain.Entities;
 
 public class Order
 {
-    public static readonly TimeSpan PaymentWindow = TimeSpan.FromMinutes(10);
+    private static readonly TimeSpan PaymentWindow = TimeSpan.FromMinutes(10);
 
     public Guid Id { get; private set; } = Guid.CreateVersion7();
 
@@ -19,7 +19,7 @@ public class Order
 
     public decimal Total { get; set; }
 
-    public DateTimeOffset CreatedAt { get; private set; }
+    public DateTimeOffset CreatedAt { get; set; }
 
     public DateTimeOffset ExpiresAt { get; private set; }
 
