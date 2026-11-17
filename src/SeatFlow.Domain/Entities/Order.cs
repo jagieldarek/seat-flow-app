@@ -19,9 +19,9 @@ public class Order
 
     public decimal Total { get; set; }
 
-    public DateTimeOffset CreatedAt { get; set; }
+    public DateTimeOffset CreatedAt { get; private init; }
 
-    public DateTimeOffset ExpiresAt { get; private set; }
+    public DateTimeOffset ExpiresAt { get; private init; }
 
     public ICollection<Ticket> Tickets { get; set; } = [];
 
