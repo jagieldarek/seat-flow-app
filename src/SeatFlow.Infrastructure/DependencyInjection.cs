@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SeatFlow.Application.Abstractions;
 using SeatFlow.Infrastructure.Persistence;
 
 namespace SeatFlow.Infrastructure;
@@ -22,6 +23,7 @@ public static class DependencyInjection
                 options.UseAsyncSeeding((context, _, cancellationToken) => DevelopmentDataSeeder.SeedAsync(context, cancellationToken));
             }
         });
+        services.AddScoped<ISeatFlowDbContext>(serviceProvider => serviceProvider.GetRequiredService<SeatFlowDbContext>());
         services.AddHealthChecks()
             .AddDbContextCheck<SeatFlowDbContext>();
 
