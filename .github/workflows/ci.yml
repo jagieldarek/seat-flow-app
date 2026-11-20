@@ -23,5 +23,12 @@ jobs:
         run: dotnet restore 
       - name: Build
         run: dotnet build --no-restore --configuration Release
+      - name: Install dotnet-ef
+        run: dotnet tool install --global dotnet-ef --version 11.0.0
+      - name: Check for missing migrations
+        run: dotnet ef migrations has-pending-model-changes --project src/SeatFlow.Infrastructure --startup-project src/SeatFlow.Api --configuration Release --no-build
+        env:
+          # Not a real database: the check never connects, the app only needs a value to start.
+          ConnectionStrings__SeatFlow: Host=localhost;Database=ci;Username=ci;Password=ci
       - name: Test
         run: dotnet test --no-build --configuration Release
