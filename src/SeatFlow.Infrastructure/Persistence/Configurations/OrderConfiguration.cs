@@ -12,5 +12,11 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
         builder.Property(order => order.Status)
             .HasConversion<string>()
             .HasMaxLength(30);
+        builder.Property(order => order.Total).HasPrecision(10, 2);
+
+        builder.HasOne(order => order.Event)
+            .WithMany()
+            .HasForeignKey(order => order.EventId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }
