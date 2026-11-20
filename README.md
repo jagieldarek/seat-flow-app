@@ -103,3 +103,17 @@ Requirements: .NET 11 SDK and Docker.
    ```
 
 Tests: `dotnet test`
+
+## Frontend
+
+The React app in `frontend/` (event list and a live seat map) is **AI-generated** with Claude, as a way to click through the API. The backend is the focus of this project and is written by me.
+
+With the API running, start the frontend (Node.js 22.22+) and open http://localhost:5173:
+
+```
+cd frontend
+npm install
+npm run dev
+```
+
+The dev server forwards `/api` requests to the API on http://localhost:5217.
