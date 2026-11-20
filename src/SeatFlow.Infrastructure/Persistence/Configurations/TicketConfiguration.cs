@@ -14,7 +14,7 @@ public class TicketConfiguration : IEntityTypeConfiguration<Ticket>
         builder.HasIndex(ticket => ticket.Code).IsUnique();
         builder.HasIndex(ticket => new { ticket.EventId, ticket.SeatId })
             .IsUnique()
-            .HasFilter("is_active"); // raw SQL: column name after snake_case convention
+            .HasFilter("\"IsActive\""); // raw PostgreSQL: quotes keep PascalCase column name
         builder.HasOne(ticket => ticket.Order)
             .WithMany(order => order.Tickets)
             .HasForeignKey(ticket => ticket.OrderId)
