@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
+using SeatFlow.Application.Abstractions;
 using SeatFlow.Domain.Entities;
 
 namespace SeatFlow.Infrastructure.Persistence;
 
-public class SeatFlowDbContext(DbContextOptions<SeatFlowDbContext> options) : DbContext(options)
+public class SeatFlowDbContext(DbContextOptions<SeatFlowDbContext> options) : DbContext(options), ISeatFlowDbContext
 {
     public DbSet<Order> Orders { get; set; }
     public DbSet<Event> Events { get; set; }
