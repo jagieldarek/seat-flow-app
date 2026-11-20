@@ -11,6 +11,7 @@ public static class EventEndpoints
 
         events.MapGet("", GetOnSaleEvents);
         events.MapGet("/{id:guid}", GetEvent);
+        events.MapGet("/{id:guid}/seats", GetSeatMap);
     }
 
     private static async Task<Ok<IReadOnlyList<EventSummary>>> GetOnSaleEvents(EventQueries queries, CancellationToken cancellationToken)
@@ -23,5 +24,12 @@ public static class EventEndpoints
         var eventDetails = await queries.GetOnSaleByIdAsync(id, cancellationToken);
 
         return eventDetails is null ? TypedResults.NotFound() : TypedResults.Ok(eventDetails);
+    }
+
+    private static async Task<Results<Ok<SeatMap>, NotFound>> GetSeatMap(Guid id, EventQueries queries, CancellationToken cancellationToken)
+    {
+        var seatMap = await queries.GetSeatMapAsync(id, cancellationToken);
+
+        return seatMap is null ? TypedResults.NotFound() : TypedResults.Ok(seatMap);
     }
 }
