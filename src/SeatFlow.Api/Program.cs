@@ -1,4 +1,6 @@
 using Scalar.AspNetCore;
+using SeatFlow.Api.Endpoints;
+using SeatFlow.Application;
 using SeatFlow.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddHealthChecks();
+builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration, seedDevelopmentData: builder.Environment.IsDevelopment());
 
 var app = builder.Build();
@@ -22,5 +25,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.MapHealthChecks("/health");
+app.MapEventEndpoints();
 
 app.Run();
